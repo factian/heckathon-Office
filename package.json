@@ -21,7 +21,7 @@
     "class-variance-authority": "^0.6.1",
     "clsx": "^1.2.1",
     "lucide-react": "^0.258.0",
-    "next": "13.4.7",
+    "next": "^13.4.7",
     "next-sanity": "^5.1.0",
     "next-themes": "^0.2.1",
     "postcss": "8.4.24",
@@ -44,5 +44,9 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.25.3",
     "eslint-plugin-react-hooks": "^4.3.0"
-  }
+  },
+  "description": "",
+  "main": ".eslintrc.js",
+  "author": "",
+  "license": "ISC"
 }

@@ -1,4 +1,4 @@
-import Image from "next/image"
+
 import React, { useEffect } from 'react'
 import ProductCard from "@/components/productCard"
 import P1 from "/public/p1.png"
@@ -6,6 +6,9 @@ import P2 from "/public/p2.png"
 import P3 from "/public/p3.png"
 import { client } from "../../../sanity/lib/client"
 import Product from "../../../sanity/Product"
+import { SanityClient } from 'sanity'
+import { Image } from 'sanity'
+
 
 
 export const getProducts = async ()=> {
@@ -15,7 +18,7 @@ export const getProducts = async ()=> {
 
 interface IProduct{
   pname:string,
-  image:string,
+  image:Image
   price:number
 }
 
@@ -26,7 +29,18 @@ const getallproductlist = async () => {
     <div className="flex justify-evenly mt-16">
       {
         data.map((item: IProduct)=>
-        <div><img src={"https://uniworthdress.com/uploads/product/CS2192..jpg"} alt="" width="200px"/><b>{item.pname}</b>  Price: ${item.price}</div>
+        <div>
+          <div>
+            {/* <img src={"https://uniworthdress.com/uploads/product/CS2192..jpg"} alt="" width="200px"/> */}
+
+            {item.image.hotspot?._type}
+          </div>
+          <div>
+            <b>{item.pname}</b></div>
+          <div> 
+            Price: ${item.price}
+          </div>
+        </div>
         )
       }
     </div>

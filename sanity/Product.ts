@@ -12,11 +12,8 @@ export default {
         {
             name: 'image',
             title: 'Product Image',
-            type: 'array',
-            of:[{type:'image'}],
-            options:{
-                hotspot:true,
-            }
+            type: 'image'
+            
         },  
         {
             name: 'price',
