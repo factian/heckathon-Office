@@ -13,7 +13,14 @@ export default {
             name: 'image',
             title: 'Product Image',
             type: 'array',
-            of:[{type:'image'}],
+            of:[{
+                type:'image',
+                fields:[{
+                    name:"alt",
+                    title:"Alt",
+                    type:"string"
+                }]
+            }],
             options:{
                 hotspot:true,
             }

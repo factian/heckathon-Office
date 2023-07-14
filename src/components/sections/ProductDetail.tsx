@@ -6,7 +6,6 @@ import P2 from "/public/p2.png"
 import P3 from "/public/p3.png"
 import { client } from "../../../sanity/lib/client"
 import Product from "../../../sanity/Product"
-import Link from "next/link"
 
 
 export const getProducts = async ()=> {
@@ -22,7 +21,7 @@ interface IProduct{
   category:string
 }
 
-const getallproductlist = async () => {
+const getproductdetail = async () => {
   const data:IProduct[] = await getProducts()
 
   return(
@@ -30,15 +29,9 @@ const getallproductlist = async () => {
       {
         data.map((item: IProduct)=>
         <div>
-          
           <div>
-          <Link key={item._id} href={`ProductDetailPage`}>
-            
-            <img src={item.image[0]} alt="" width={390} height={400}/>
-            
-            </Link>
+            <img src={item.image[0]} alt="" width={380} height={400}/>
           </div>
-          
           <div className="text-lg"><b>{item.pname}</b></div>
           <div className="text-lg"> Price: ${item.price}</div>
         </div>
@@ -48,14 +41,4 @@ const getallproductlist = async () => {
   )
 }
 
-export const productlist = () => {
-  return (
-   <div className="flex justify-evenly mt-16">
-        <ProductCard title="abc" price={100} img={P1}/>
-        <ProductCard title="xyz" price={500} img={P1}/>
-        <ProductCard title="Jacket" price={1000} img={P3}/>
-    </div>
-
-  )
-}
-export default getallproductlist
+export default getproductdetail
