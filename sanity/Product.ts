@@ -12,8 +12,18 @@ export default {
         {
             name: 'image',
             title: 'Product Image',
-            type: 'image'
-            
+            type: 'array',
+            of:[{
+                type:'image',
+                fields:[{
+                    name:"alt",
+                    title:"Alt",
+                    type:"string"
+                }]
+            }],
+            options:{
+                hotspot:true,
+            }
         },  
         {
             name: 'price',
