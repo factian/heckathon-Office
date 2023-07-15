@@ -4,13 +4,11 @@ import ProductCard from "@/components/productCard"
 import P1 from "/public/p1.png"
 import P2 from "/public/p2.png"
 import P3 from "/public/p3.png"
-import { client } from "../../../sanity/lib/client"
-import Product from "../../../sanity/Product"
-import Link from "next/link"
+import { client } from "../../../../sanity/lib/client"
 
 
-export const getProducts = async ()=> {
-  const res = await client.fetch('*[_type=="product"]{_id,price,pname,category,"image":image[].asset->url}')
+export const getProductsbyId = async (productId:any)=> {
+  const res = await client.fetch('*[_type=="product" && _id == $productId]{_id,price,pname,category,"image":image[].asset->url}',{productId:productId})
   return res;
 } 
 
@@ -22,19 +20,18 @@ interface IProduct{
   category:string
 }
 
-const getproductdetail = async () => {
-  const data:IProduct[] = await getProducts()
+const getproductdetail = async ({params}:any) => {
+  const data:IProduct[] = await getProductsbyId(params._id)
 
   return(
+    
     <div className="flex justify-evenly mt-16">
       {
         data.map((item: IProduct)=>
         <div>
-          {/* <Link key={item._id} href={`/movies/${item._id}`}> */}
-          {/* <Link key={item._id} href={`/productDetail`}> */}
-          <Link key={item._id} href={`/productDetail/${item._id}`}>
-            <img src={item.image[0]} alt="" width={390} height={400}/>
-          </Link>
+          <div>
+            <img src={item.image[0]} alt="" width={380} height={400}/>
+          </div>
           <div className="text-lg"><b>{item.pname}</b></div>
           <div className="text-lg"> Price: ${item.price}</div>
         </div>
